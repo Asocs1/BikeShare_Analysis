@@ -2,11 +2,6 @@ import os
 import time
 import pandas as pd
 import numpy as np
-os.system('cls' if os.name == 'nt' else 'clearn')
-
-"""city_data = { 'chicago':'bikeshare\\chicago.csv',
-              'new york city':'bikeshare\\new_york_city.csv',
-              'washington':'bikeshare\\washington.csv' }"""
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 city_data = { 'chicago': os.path.join(current_dir, 'chicago.csv'),
@@ -97,8 +92,7 @@ def trip_duration_stats(df):
     start_time = time.time()
     
     # display total travel time
-    total_travel_time = df['Trip Duration'].sum()/3600
-    print(f'Total Travel Time: {total_travel_time:.2f} hours')
+    print(f'Total Travel Time: {df["Trip Duration"].sum()/3600:.2f} hours')
     
     # display mean travel time
     mean_travel_time = df['Trip Duration'].mean()/60
