@@ -2,7 +2,7 @@ import os
 import time
 import pandas as pd
 import numpy as np
-os.system('cls' if os.name == 'nt' else 'clearn')
+
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 city_data = { 'chicago': os.path.join(current_dir, 'chicago.csv'),
