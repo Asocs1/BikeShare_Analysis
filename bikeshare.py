@@ -12,6 +12,16 @@ day_list = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 
 month_list = ['january', 'february', 'march', 'april', 'may','june','july',
               'august','september', 'october', 'november', 'december', 'all'] 
 
+def get_valid_input(prompt, valid_options):
+    """Gets valid input from the user by checking if it exists in valid_options."""
+    
+    while True:
+        value = input(prompt).strip().lower()
+        if value in valid_options:
+            return value
+        else:
+            print("Invalid input. Please try again.")
+            
 def get_filters():
     """Asks user to specify a city, month, and day to analyze."""
     
