@@ -4,10 +4,6 @@ import pandas as pd
 import numpy as np
 os.system('cls' if os.name == 'nt' else 'clearn')
 
-"""city_data = { 'chicago':'bikeshare\\chicago.csv',
-              'new york city':'bikeshare\\new_york_city.csv',
-              'washington':'bikeshare\\washington.csv' }"""
-
 current_dir = os.path.dirname(os.path.abspath(__file__))
 city_data = { 'chicago': os.path.join(current_dir, 'chicago.csv'),
              'new york city': os.path.join(current_dir, 'new_york_city.csv'), 
