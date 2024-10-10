@@ -3,7 +3,6 @@ import time
 import pandas as pd
 import numpy as np
 
-
 current_dir = os.path.dirname(os.path.abspath(__file__))
 city_data = { 'chicago': os.path.join(current_dir, 'chicago.csv'),
              'new york city': os.path.join(current_dir, 'new_york_city.csv'), 
@@ -13,19 +12,23 @@ day_list = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 
 month_list = ['january', 'february', 'march', 'april', 'may','june','july',
               'august','september', 'october', 'november', 'december', 'all'] 
 
+def get_valid_input(prompt, valid_options):
+    """Gets valid input from the user by checking if it exists in valid_options."""
+    
+    while True:
+        value = input(prompt).strip().lower()
+        if value in valid_options:
+            return value
+        else:
+            print("Invalid input. Please try again.")
+            
 def get_filters():
     """Asks user to specify a city, month, and day to analyze."""
     
     print('Hello! Let\'s explore some US bikeshare data!')
-    city = input('Select a city:\n chicago\n new york city\n washington\n').strip().lower()
-    while city not in city_data:
-        city = input('invalid city. please Choose from the three cities as shown.\n').strip().lower()
-    month = input('Select a month: january, february, ... , june, all\n').strip().lower()
-    while month not in month_list:
-        month = input('invalid month. please select again.\n').strip().lower()
-    day = input('Select a day: monday, tuesday, ... sunday, all\n').strip().lower()
-    while day not in day_list:
-        day = input('invalid day. please select again.\n').strip().lower()
+    city = get_valid_input("Select a city: chicago, new york city, washington\n", city_data)
+    month = get_valid_input("Select a month: january, february, ... , june, all\n", month_list)
+    day = get_valid_input("Select a day: monday, tuesday, ... , sunday, all\n", day_list)
     print('-'*40)
     return city, month, day
 
@@ -93,12 +96,10 @@ def trip_duration_stats(df):
     start_time = time.time()
     
     # display total travel time
-    total_travel_time = df['Trip Duration'].sum()/3600
-    print(f'Total Travel Time: {total_travel_time:.2f} hours')
+    print(f'Total Travel Time: {df["Trip Duration"].sum()/3600:.2f} hours')
     
     # display mean travel time
-    mean_travel_time = df['Trip Duration'].mean()/60
-    print(f'Mean Travel Time: {mean_travel_time:.2f} minutes')
+    print(f'Mean Travel Time: {df["Trip Duration"].mean()/60:.2f} minutes')
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
     
