@@ -26,15 +26,9 @@ def get_filters():
     """Asks user to specify a city, month, and day to analyze."""
     
     print('Hello! Let\'s explore some US bikeshare data!')
-    city = input('Select a city:\n chicago\n new york city\n washington\n').strip().lower()
-    while city not in city_data:
-        city = input('invalid city. please Choose from the three cities as shown.\n').strip().lower()
-    month = input('Select a month: january, february, ... , june, all\n').strip().lower()
-    while month not in month_list:
-        month = input('invalid month. please select again.\n').strip().lower()
-    day = input('Select a day: monday, tuesday, ... sunday, all\n').strip().lower()
-    while day not in day_list:
-        day = input('invalid day. please select again.\n').strip().lower()
+    city = get_valid_input("Select a city: chicago, new york city, washington\n", city_data)
+    month = get_valid_input("Select a month: january, february, ... , june, all\n", month_list)
+    day = get_valid_input("Select a day: monday, tuesday, ... , sunday, all\n", day_list)
     print('-'*40)
     return city, month, day
 
